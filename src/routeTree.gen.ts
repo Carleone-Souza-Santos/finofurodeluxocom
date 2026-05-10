@@ -9,11 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VideosRouteImport } from './routes/videos'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as MetodosRouteImport } from './routes/metodos'
+import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
@@ -22,6 +29,11 @@ const SobreRoute = SobreRouteImport.update({
 const MetodosRoute = MetodosRouteImport.update({
   id: '/metodos',
   path: '/metodos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContatoRoute = ContatoRouteImport.update({
@@ -38,39 +50,61 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/galeria': typeof GaleriaRoute
   '/metodos': typeof MetodosRoute
   '/sobre': typeof SobreRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/galeria': typeof GaleriaRoute
   '/metodos': typeof MetodosRoute
   '/sobre': typeof SobreRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contato': typeof ContatoRoute
+  '/galeria': typeof GaleriaRoute
   '/metodos': typeof MetodosRoute
   '/sobre': typeof SobreRoute
+  '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contato' | '/metodos' | '/sobre'
+  fullPaths: '/' | '/contato' | '/galeria' | '/metodos' | '/sobre' | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contato' | '/metodos' | '/sobre'
-  id: '__root__' | '/' | '/contato' | '/metodos' | '/sobre'
+  to: '/' | '/contato' | '/galeria' | '/metodos' | '/sobre' | '/videos'
+  id:
+    | '__root__'
+    | '/'
+    | '/contato'
+    | '/galeria'
+    | '/metodos'
+    | '/sobre'
+    | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContatoRoute: typeof ContatoRoute
+  GaleriaRoute: typeof GaleriaRoute
   MetodosRoute: typeof MetodosRoute
   SobreRoute: typeof SobreRoute
+  VideosRoute: typeof VideosRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sobre': {
       id: '/sobre'
       path: '/sobre'
@@ -83,6 +117,13 @@ declare module '@tanstack/react-router' {
       path: '/metodos'
       fullPath: '/metodos'
       preLoaderRoute: typeof MetodosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contato': {
@@ -105,8 +146,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContatoRoute: ContatoRoute,
+  GaleriaRoute: GaleriaRoute,
   MetodosRoute: MetodosRoute,
   SobreRoute: SobreRoute,
+  VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
