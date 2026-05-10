@@ -18,6 +18,8 @@ export function SiteHeader() {
             { to: "/", label: "Início" },
             { to: "/sobre", label: "Sobre" },
             { to: "/metodos", label: "Métodos" },
+            { to: "/galeria", label: "Galeria" },
+            { to: "/videos", label: "Vídeos" },
             { to: "/contato", label: "Contato" },
           ].map((l) => (
             <Link
@@ -66,6 +68,8 @@ export function SiteFooter() {
             <li><Link to="/" className="hover:text-primary">Início</Link></li>
             <li><Link to="/sobre" className="hover:text-primary">Sobre Angelica</Link></li>
             <li><Link to="/metodos" className="hover:text-primary">Métodos FF</Link></li>
+            <li><Link to="/galeria" className="hover:text-primary">Galeria</Link></li>
+            <li><Link to="/videos" className="hover:text-primary">Vídeos</Link></li>
             <li><Link to="/contato" className="hover:text-primary">Contato</Link></li>
           </ul>
         </div>
