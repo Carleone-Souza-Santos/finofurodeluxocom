@@ -123,7 +123,7 @@ function VideosPage() {
       {/* Vídeo destaque */}
       <section className="mx-auto max-w-6xl px-6 pb-12">
         <div className="relative aspect-video overflow-hidden rounded-3xl border border-primary/20 shadow-luxe group">
-          <img src={cover} alt="Vídeo destaque — Studio Fino Furo de Luxo São Paulo" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src={THUMB_DESTAQUE} alt="Tour pelo Studio Fino Furo de Luxo — vídeo destaque" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <button
@@ -179,18 +179,30 @@ function VideosPage() {
         </div>
       </section>
 
-      {/* Modal player simples */}
+      {/* Modal player */}
       {ativo && (
         <div
           className="fixed inset-0 z-[60] grid place-items-center bg-background/90 p-4 animate-fade-up"
           onClick={() => setAtivo(null)}
         >
           <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-luxe" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video w-full bg-black grid place-items-center text-center text-muted-foreground p-8">
-              <div>
-                <p className="font-display text-2xl text-gradient-gold">Vídeo em produção</p>
-                <p className="mt-2 text-sm">Envie o link do YouTube/Vimeo do conteúdo "{ativo}" para incorporarmos aqui.</p>
-              </div>
+            <div className="aspect-video w-full bg-black">
+              {ativo === "destaque" ? (
+                <iframe
+                  className="h-full w-full"
+                  src={`https://www.youtube.com/embed/${YOUTUBE_DESTAQUE_ID}?autoplay=1&rel=0`}
+                  title="Tour pelo Studio Fino Furo de Luxo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="h-full w-full grid place-items-center text-center text-muted-foreground p-8">
+                  <div>
+                    <p className="font-display text-2xl text-gradient-gold">Vídeo em produção</p>
+                    <p className="mt-2 text-sm">Envie o link do YouTube/Vimeo do conteúdo "{ativo}" para incorporarmos aqui.</p>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="flex justify-end p-3">
               <button onClick={() => setAtivo(null)} className="rounded-full border border-primary/30 px-4 py-1.5 text-sm hover:border-primary">Fechar</button>
