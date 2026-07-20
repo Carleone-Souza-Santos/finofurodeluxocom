@@ -7,6 +7,9 @@ import baby from "@/assets/baby.jpg";
 import lobulo from "@/assets/lobulo.jpg";
 import joias from "@/assets/joias.jpg";
 
+const YOUTUBE_DESTAQUE_ID = "Zqt7qZqa3b0";
+const THUMB_DESTAQUE = `https://img.youtube.com/vi/${YOUTUBE_DESTAQUE_ID}/maxresdefault.jpg`;
+
 export const Route = createFileRoute("/videos")({
   head: () => ({
     meta: [
@@ -23,8 +26,8 @@ export const Route = createFileRoute("/videos")({
       },
       { name: "robots", content: "index, follow, max-video-preview:-1, max-image-preview:large" },
       { property: "og:title", content: "Vídeos Explicativos — Fino Furo de Luxo" },
-      { property: "og:description", content: "Cada etapa do processo em vídeo profissional." },
-      { property: "og:image", content: cover },
+      { property: "og:description", content: "Assista ao tour pelo studio e a cada etapa da perfuração auricular em vídeo profissional." },
+      { property: "og:image", content: THUMB_DESTAQUE },
       { property: "og:type", content: "video.other" },
       { name: "twitter:card", content: "summary_large_image" },
       { rel: "canonical", href: "https://finofurodeluxo.com.br/videos" } as never,
@@ -37,6 +40,7 @@ export const Route = createFileRoute("/videos")({
           "@type": "ItemList",
           name: "Vídeos Fino Furo de Luxo",
           itemListElement: [
+            { "@type": "VideoObject", name: "Tour pelo Studio Fino Furo de Luxo", description: "Conheça o ambiente premium e a experiência humanizada de perfuração de orelha em São Paulo.", thumbnailUrl: THUMB_DESTAQUE, uploadDate: "2026-07-20", embedUrl: `https://www.youtube.com/embed/${YOUTUBE_DESTAQUE_ID}`, contentUrl: `https://www.youtube.com/watch?v=${YOUTUBE_DESTAQUE_ID}` },
             { "@type": "VideoObject", name: "FF Adultos Luxo — Processo completo", description: "Demonstração da técnica humanizada para adultos.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-adulto.jpg", uploadDate: "2025-01-01" },
             { "@type": "VideoObject", name: "FF Baby Luxo — Furinho do bebê", description: "Procedimento delicado em bebês com segurança total.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-baby.jpg", uploadDate: "2025-01-01" },
             { "@type": "VideoObject", name: "Reconstrução de Lóbulo", description: "Antes e depois da reconstrução estética.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-lobulo.jpg", uploadDate: "2025-01-01" },
