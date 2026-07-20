@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logoFF from "@/assets/logo-ff.png";
 
 const navLinks = [
   { to: "/", label: "Início" },
@@ -23,9 +24,11 @@ export function SiteHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-3 group" onClick={() => setOpen(false)}>
-          <span className="grid h-10 w-10 md:h-11 md:w-11 place-items-center rounded-full bg-gradient-gold text-primary-foreground font-display text-lg md:text-xl font-bold shadow-glow transition-transform group-hover:scale-110">
-            FF
-          </span>
+          <img
+            src={logoFF}
+            alt="Fino Furo de Luxo"
+            className="h-11 w-11 md:h-14 md:w-14 object-contain drop-shadow-[0_0_12px_oklch(0.78_0.13_78/0.45)] transition-transform group-hover:scale-110"
+          />
           <span className="block">
             <span className="block font-display text-base md:text-lg leading-none text-gradient-gold">Fino Furo</span>
             <span className="block text-[9px] md:text-[10px] tracking-[0.3em] md:tracking-[0.35em] text-muted-foreground">DE LUXO</span>
@@ -106,7 +109,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 md:gap-12 px-6 py-12 md:py-16 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-3">
-            <span className="grid h-12 w-12 place-items-center rounded-full bg-gradient-gold text-primary-foreground font-display text-xl font-bold">FF</span>
+            <img src={logoFF} alt="Fino Furo de Luxo" className="h-14 w-14 object-contain drop-shadow-[0_0_16px_oklch(0.78_0.13_78/0.4)]" />
             <div>
               <p className="font-display text-xl text-gradient-gold">Fino Furo de Luxo</p>
               <p className="text-xs tracking-[0.3em] text-muted-foreground">PIERCING HUMANIZADO</p>
