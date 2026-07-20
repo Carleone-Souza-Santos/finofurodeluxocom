@@ -7,6 +7,9 @@ import baby from "@/assets/baby.jpg";
 import lobulo from "@/assets/lobulo.jpg";
 import joias from "@/assets/joias.jpg";
 
+const YOUTUBE_DESTAQUE_ID = "Zqt7qZqa3b0";
+const THUMB_DESTAQUE = `https://img.youtube.com/vi/${YOUTUBE_DESTAQUE_ID}/maxresdefault.jpg`;
+
 export const Route = createFileRoute("/videos")({
   head: () => ({
     meta: [
@@ -23,8 +26,8 @@ export const Route = createFileRoute("/videos")({
       },
       { name: "robots", content: "index, follow, max-video-preview:-1, max-image-preview:large" },
       { property: "og:title", content: "Vídeos Explicativos — Fino Furo de Luxo" },
-      { property: "og:description", content: "Cada etapa do processo em vídeo profissional." },
-      { property: "og:image", content: cover },
+      { property: "og:description", content: "Assista ao tour pelo studio e a cada etapa da perfuração auricular em vídeo profissional." },
+      { property: "og:image", content: THUMB_DESTAQUE },
       { property: "og:type", content: "video.other" },
       { name: "twitter:card", content: "summary_large_image" },
       { rel: "canonical", href: "https://finofurodeluxo.com.br/videos" } as never,
@@ -37,6 +40,7 @@ export const Route = createFileRoute("/videos")({
           "@type": "ItemList",
           name: "Vídeos Fino Furo de Luxo",
           itemListElement: [
+            { "@type": "VideoObject", name: "Tour pelo Studio Fino Furo de Luxo", description: "Conheça o ambiente premium e a experiência humanizada de perfuração de orelha em São Paulo.", thumbnailUrl: THUMB_DESTAQUE, uploadDate: "2026-07-20", embedUrl: `https://www.youtube.com/embed/${YOUTUBE_DESTAQUE_ID}`, contentUrl: `https://www.youtube.com/watch?v=${YOUTUBE_DESTAQUE_ID}` },
             { "@type": "VideoObject", name: "FF Adultos Luxo — Processo completo", description: "Demonstração da técnica humanizada para adultos.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-adulto.jpg", uploadDate: "2025-01-01" },
             { "@type": "VideoObject", name: "FF Baby Luxo — Furinho do bebê", description: "Procedimento delicado em bebês com segurança total.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-baby.jpg", uploadDate: "2025-01-01" },
             { "@type": "VideoObject", name: "Reconstrução de Lóbulo", description: "Antes e depois da reconstrução estética.", thumbnailUrl: "https://finofurodeluxo.com.br/og-video-lobulo.jpg", uploadDate: "2025-01-01" },
@@ -119,7 +123,7 @@ function VideosPage() {
       {/* Vídeo destaque */}
       <section className="mx-auto max-w-6xl px-6 pb-12">
         <div className="relative aspect-video overflow-hidden rounded-3xl border border-primary/20 shadow-luxe group">
-          <img src={cover} alt="Vídeo destaque — Studio Fino Furo de Luxo São Paulo" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <img src={THUMB_DESTAQUE} alt="Tour pelo Studio Fino Furo de Luxo — vídeo destaque" className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
             <button
@@ -175,18 +179,30 @@ function VideosPage() {
         </div>
       </section>
 
-      {/* Modal player simples */}
+      {/* Modal player */}
       {ativo && (
         <div
           className="fixed inset-0 z-[60] grid place-items-center bg-background/90 p-4 animate-fade-up"
           onClick={() => setAtivo(null)}
         >
           <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-primary/30 bg-card shadow-luxe" onClick={(e) => e.stopPropagation()}>
-            <div className="aspect-video w-full bg-black grid place-items-center text-center text-muted-foreground p-8">
-              <div>
-                <p className="font-display text-2xl text-gradient-gold">Vídeo em produção</p>
-                <p className="mt-2 text-sm">Envie o link do YouTube/Vimeo do conteúdo "{ativo}" para incorporarmos aqui.</p>
-              </div>
+            <div className="aspect-video w-full bg-black">
+              {ativo === "destaque" ? (
+                <iframe
+                  className="h-full w-full"
+                  src={`https://www.youtube.com/embed/${YOUTUBE_DESTAQUE_ID}?autoplay=1&rel=0`}
+                  title="Tour pelo Studio Fino Furo de Luxo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="h-full w-full grid place-items-center text-center text-muted-foreground p-8">
+                  <div>
+                    <p className="font-display text-2xl text-gradient-gold">Vídeo em produção</p>
+                    <p className="mt-2 text-sm">Envie o link do YouTube/Vimeo do conteúdo "{ativo}" para incorporarmos aqui.</p>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="flex justify-end p-3">
               <button onClick={() => setAtivo(null)} className="rounded-full border border-primary/30 px-4 py-1.5 text-sm hover:border-primary">Fechar</button>
