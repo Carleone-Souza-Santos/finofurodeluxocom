@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
+import { WhatsAppFab } from "@/components/whatsapp-fab";
 
 function NotFoundComponent() {
   return (
@@ -139,6 +140,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <WhatsAppFab />
     </QueryClientProvider>
   );
 }
