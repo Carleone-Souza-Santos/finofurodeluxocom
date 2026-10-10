@@ -12,7 +12,11 @@ const THUMB_DESTAQUE = `https://img.youtube.com/vi/${YOUTUBE_DESTAQUE_ID}/maxres
 
 export const Route = createFileRoute("/videos")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/videos" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/videos" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Vídeos Explicativos — Como é a Perfuração de Orelha | Fino Furo de Luxo" },
       {
         name: "description",
@@ -30,7 +34,6 @@ export const Route = createFileRoute("/videos")({
       { property: "og:image", content: THUMB_DESTAQUE },
       { property: "og:type", content: "video.other" },
       { name: "twitter:card", content: "summary_large_image" },
-      { rel: "canonical", href: "https://finofurodeluxo.com.br/videos" } as never,
     ],
     scripts: [
       {

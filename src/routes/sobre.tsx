@@ -4,7 +4,11 @@ import heroEar from "@/assets/hero-ear.jpg";
 
 export const Route = createFileRoute("/sobre")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/sobre" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/sobre" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Sobre Angelica Ribeiro — Fino Furo de Luxo" },
       { name: "description", content: "Conheça Angelica Ribeiro, Enfermeira especialista em furo humanizado e fundadora da Fino Furo de Luxo em Santo André." },
       { property: "og:title", content: "Sobre Angelica · Fino Furo de Luxo" },

@@ -3,7 +3,11 @@ import { AuroraBackdrop, Sparkles } from "@/components/site-chrome";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/contato" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/contato" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Contato — Fino Furo de Luxo · Santo André" },
       { name: "description", content: "Agende seu horário com Angelica Ribeiro. WhatsApp, Instagram e atendimento em Santo André ou em domicílio." },
       { property: "og:title", content: "Contato · Fino Furo de Luxo" },
