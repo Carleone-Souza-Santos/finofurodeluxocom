@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -81,11 +82,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:description", content: "Perfuração auricular premium e humanizada em Santo André." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:site_name", content: "Fino Furo de Luxo" },
+      { name: "keywords", content: "furo de orelha, perfuração auricular humanizada, furo humanizado bebê, piercing Santo André, piercing São Paulo, reconstrução de lóbulo, enfermeira piercer, joias para bebê" },
+      { name: "geo.region", content: "BR-SP" },
+      { name: "geo.placename", content: "Santo André, São Paulo" },
+      { name: "theme-color", content: "#2a0f17" },
+      { name: "format-detection", content: "telephone=yes" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "apple-touch-icon", href: "/favicon.png" },
+      { rel: "dns-prefetch", href: "https://i.ytimg.com" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" },
@@ -95,7 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "LocalBusiness",
+          "@type": ["LocalBusiness", "HealthAndBeautyBusiness"],
           "@id": "https://finofurodeluxo.com.br/#business",
           name: "Fino Furo de Luxo",
           description: "Perfuração auricular humanizada premium em São Paulo por enfermeira especialista.",
@@ -132,6 +141,18 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return;
+    const h = location.hostname;
+    const isPreview = window.self !== window.top || h.includes("id-preview") || h === "localhost";
+    if (isPreview) {
+      navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister()));
+      return;
+    }
+    navigator.serviceWorker.register("/sw.js").catch(() => {});
+  }, []);
+
 
   return (
     <QueryClientProvider client={queryClient}>
