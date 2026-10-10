@@ -13,7 +13,11 @@ import lobulo from "@/assets/lobulo.jpg";
 
 export const Route = createFileRoute("/galeria")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/galeria" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/galeria" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Galeria de Resultados — Antes e Depois | Fino Furo de Luxo São Paulo" },
       {
         name: "description",
@@ -33,7 +37,6 @@ export const Route = createFileRoute("/galeria")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Galeria Antes e Depois — Fino Furo de Luxo" },
       { name: "twitter:image", content: "/og-galeria.jpg" },
-      { rel: "canonical", href: "https://finofurodeluxo.com.br/galeria" } as never,
     ],
     scripts: [
       {

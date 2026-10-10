@@ -8,7 +8,11 @@ import lobulo from "@/assets/lobulo.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Fino Furo de Luxo — Piercing Humanizado em Santo André" },
       { name: "description", content: "Perfuração auricular humanizada e premium por Angelica Ribeiro. Sem dor, com técnica de Enfermagem, joias finas e ambiente acolhedor." },
       { property: "og:title", content: "Fino Furo de Luxo — Piercing Humanizado" },

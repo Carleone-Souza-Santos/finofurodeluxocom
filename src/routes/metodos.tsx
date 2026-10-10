@@ -6,7 +6,11 @@ import lobulo from "@/assets/lobulo.jpg";
 
 export const Route = createFileRoute("/metodos")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://https-finofurodeluxo-com.lovable.app/metodos" }],
     meta: [
+      { property: "og:url", content: "https://https-finofurodeluxo-com.lovable.app/metodos" },
+      { property: "og:locale", content: "pt_BR" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { title: "Métodos FF — Adultos, Baby e Reconstrução de Lóbulo" },
       { name: "description", content: "Conheça os três métodos exclusivos da Fino Furo de Luxo: FF Adultos Luxo, FF Baby Luxo e FF Reconstrução de Lóbulo." },
       { property: "og:title", content: "Métodos FF · Fino Furo de Luxo" },

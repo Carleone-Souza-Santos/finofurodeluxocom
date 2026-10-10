@@ -1,0 +1,13 @@
+{
+  "name": "Fino Furo de Luxo — Piercing Humanizado",
+  "short_name": "Fino Furo",
+  "description": "Perfuração auricular humanizada e premium em Santo André e São Paulo.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a0a0f",
+  "theme_color": "#2a0f17",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "500x500", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
